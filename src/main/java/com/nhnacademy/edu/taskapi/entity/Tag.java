@@ -28,7 +28,7 @@ public class Tag {
     @JoinColumn(name = "projectId")
     private Project project;
 
-    @OneToMany(mappedBy = "tag")
-    private List<ProjectTag> projectTags;
+//    @OneToMany(mappedBy = "tag")
+//    private List<ProjectTag> projectTags;
 
 }

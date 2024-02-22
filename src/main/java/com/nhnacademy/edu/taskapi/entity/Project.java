@@ -27,15 +27,15 @@ public class Project {
     @Column
     private String projectAdmin;
 
-    @OneToMany(mappedBy = "project")
-    private List<ProjectMember> projectMembers;
-
-    @OneToMany(mappedBy = "project")
-    private List<Tag> tags;
-
-    @OneToMany(mappedBy = "project")
-    private List<Task> tasks;
-
-    @OneToMany(mappedBy = "project")
-    private List<Milestone> milestones;
+//    @OneToMany(mappedBy = "project")
+//    private List<ProjectMember> projectMembers;
+//
+//    @OneToMany(mappedBy = "project")
+//    private List<Tag> tags;
+//
+//    @OneToMany(mappedBy = "project")
+//    private List<Task> tasks;
+//
+//    @OneToMany(mappedBy = "project")
+//    private List<Milestone> milestones;
 }

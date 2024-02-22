@@ -31,12 +31,12 @@ public class Task {
     private String taskContent;
 
 
-    //조인
-    @OneToMany(mappedBy = "task")
-    private List<ProjectTag> projectTags;
-
-    @OneToMany(mappedBy = "task")
-    private List<Comment> comments;
+//    //조인
+//    @OneToMany(mappedBy = "task")
+//    private List<ProjectTag> projectTags;
+//
+//    @OneToMany(mappedBy = "task")
+//    private List<Comment> comments;
 
     @OneToOne
     private Milestone milestone;
