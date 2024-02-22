@@ -26,10 +26,10 @@ public class ProjectMember {
 
 
     //조인
-//    @MapsId("projectId")
-//    @ManyToOne
-//    @JoinColumn(name="projectId")
-//    private Project project;
+    @MapsId("projectId")
+    @ManyToOne
+    @JoinColumn(name="projectId")
+    private Project project;
 
 
 
