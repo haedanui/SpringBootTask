@@ -4,6 +4,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Getter
 @Setter
@@ -16,10 +17,16 @@ public class ProjectMember {
     PK pk;
 
     @Column
-    private Long projectId;
-
-    @Column
     private String userName;
+
+
+    //조인
+    @MapsId("projectId")
+    @ManyToOne
+    @JoinColumn(name="projectId")
+    private Project project;
+
+
 
     @NoArgsConstructor
     @AllArgsConstructor
@@ -36,8 +43,5 @@ public class ProjectMember {
         private Long projectId;
     }
 
-    //조인
-    @ManyToOne
-    @JoinColumn(name="projectId")
-    private Project project;
+
 }

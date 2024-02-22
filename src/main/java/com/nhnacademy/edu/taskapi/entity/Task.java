@@ -36,8 +36,10 @@ public class Task {
     private List<ProjectTag> projectTags;
 
     @OneToMany(mappedBy = "task")
-    private List<Milestone> milestones;
+    private List<Comment> comments;
 
+    @OneToOne
+    private Milestone milestone;
 
     @ManyToOne
     @JoinColumn(name = "projectId")

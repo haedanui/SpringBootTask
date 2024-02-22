@@ -13,7 +13,6 @@ import java.util.List;
 @EqualsAndHashCode
 public class ProjectTag {
 
-
     @EmbeddedId
     PK pk;
 
