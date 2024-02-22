@@ -24,7 +24,7 @@ public class ProjectMemberServiceImpl implements ProjectMemberService {
     }
 
     @Override
-    public ProjectMember addProjectMember(ProjectMember projectMember) {
+    public ProjectMember createProjectMember(ProjectMember projectMember) {
         return projectMemberRepository.save(projectMember);
     }
 

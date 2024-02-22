@@ -7,6 +7,12 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.util.List;
 
+//@NamedEntityGraph(name=
+//        "TaskWithProjectWithMilestone", attributeNodes = {
+//        @NamedAttributeNode("project"),
+//        @NamedAttributeNode("milestone")
+//})
+
 @Getter
 @Setter
 @Entity
@@ -38,12 +44,12 @@ public class Task {
 //    @OneToMany(mappedBy = "task")
 //    private List<Comment> comments;
 
-    @OneToOne
-    private Milestone milestone;
+//    @OneToOne(fetch = FetchType.LAZY)
+//    private Milestone milestone;
 
-    @ManyToOne
-    @JoinColumn(name = "projectId")
-    private Project project;
+//    @ManyToOne
+//    @JoinColumn(name = "projectId")
+//    private Project project;
 
 
 }

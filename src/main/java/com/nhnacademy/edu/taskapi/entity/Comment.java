@@ -25,8 +25,8 @@ public class Comment {
     @Column
     private String userNumber;
 
-    @ManyToOne
-    @JoinColumn(name = "tasknumber")
-    private Task task;
+//    @ManyToOne
+//    @JoinColumn(name = "tasknumber")
+//    private Task task;
 
 }

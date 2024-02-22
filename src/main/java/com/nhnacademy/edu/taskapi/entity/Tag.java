@@ -7,6 +7,11 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.util.List;
 
+//@NamedEntityGraph(name=
+//        "TagWithProject", attributeNodes = {
+//        @NamedAttributeNode("project")
+//})
+
 @Getter
 @Setter
 @Entity
@@ -24,9 +29,9 @@ public class Tag {
     @Column
     private String tagName;
 
-    @ManyToOne
-    @JoinColumn(name = "projectId")
-    private Project project;
+//    @ManyToOne
+//    @JoinColumn(name = "projectId")
+//    private Project project;
 
 //    @OneToMany(mappedBy = "tag")
 //    private List<ProjectTag> projectTags;

@@ -24,6 +24,13 @@ public class ProjectTagServiceImpl implements ProjectTagService {
     }
 
     @Override
+    public ProjectTag getProjectTag(Long tagNumber, Long taskNumber) {
+        ProjectTag.PK pk = new ProjectTag.PK(tagNumber, taskNumber);
+        return projectTagRepository.findById(pk).orElse(null);
+
+    }
+
+    @Override
     public ProjectTag addProjectTag(ProjectTag projectTag) {
         return projectTagRepository.save(projectTag);
     }

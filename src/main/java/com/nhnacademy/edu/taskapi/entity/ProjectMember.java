@@ -6,6 +6,11 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
 
+//@NamedEntityGraph(name=
+//        "ProjectMemberWithProject", attributeNodes = {
+//        @NamedAttributeNode("project"),
+//})
+
 @Getter
 @Setter
 @Entity
@@ -21,10 +26,10 @@ public class ProjectMember {
 
 
     //조인
-    @MapsId("projectId")
-    @ManyToOne
-    @JoinColumn(name="projectId")
-    private Project project;
+//    @MapsId("projectId")
+//    @ManyToOne
+//    @JoinColumn(name="projectId")
+//    private Project project;
 
 
 

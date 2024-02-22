@@ -12,6 +12,8 @@ import com.nhnacademy.edu.taskapi.service.ProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ProjectServiceImpl implements ProjectService {
 
@@ -20,6 +22,16 @@ public class ProjectServiceImpl implements ProjectService {
     @Autowired
     public ProjectServiceImpl(ProjectRepository projectRepository) {
         this.projectRepository = projectRepository;
+    }
+
+    @Override
+    public List<Project> getProjects() {
+        return projectRepository.findAll();
+    }
+
+    @Override
+    public Project getProject(Long projectId) {
+        return projectRepository.findById(projectId).orElse(null);
     }
 
     //프로젝트를 생성합니다.

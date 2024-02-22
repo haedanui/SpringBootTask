@@ -10,7 +10,7 @@ public interface ProjectMemberService {
 
     List<ProjectMember> getProjectMembers();
 
-    ProjectMember addProjectMember(ProjectMember projectMember);
+    ProjectMember createProjectMember(ProjectMember projectMember);
 
     void deleteProjectMember(Long userNumber);
 

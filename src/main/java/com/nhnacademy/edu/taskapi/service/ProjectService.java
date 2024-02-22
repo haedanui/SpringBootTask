@@ -9,6 +9,10 @@ import java.util.List;
 
 public interface ProjectService {
 
+    List<Project> getProjects();
+
+    Project getProject(Long projectId);
+
     Project createProject(Project project);
 
     Project updateStatusProject(Project project);
