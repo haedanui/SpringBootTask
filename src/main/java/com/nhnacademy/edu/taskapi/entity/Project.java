@@ -35,4 +35,7 @@ public class Project {
 
     @OneToMany(mappedBy = "project")
     private List<Task> tasks;
+
+    @OneToMany(mappedBy = "project")
+    private List<Milestone> milestones;
 }
