@@ -7,10 +7,10 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.util.List;
 
-//@NamedEntityGraph(name=
-//        "TagWithProject", attributeNodes = {
-//        @NamedAttributeNode("project")
-//})
+@NamedEntityGraph(name=
+        "TagWithProject", attributeNodes = {
+        @NamedAttributeNode("project")
+})
 
 @Getter
 @Setter
@@ -24,16 +24,15 @@ public class Tag {
     private Long tagNumber;
 
     @Column
-    private Long projectId;
-
-    @Column
     private String tagName;
 
-//    @ManyToOne
-//    @JoinColumn(name = "projectId")
-//    private Project project;
 
-//    @OneToMany(mappedBy = "tag")
-//    private List<ProjectTag> projectTags;
+    //작동 안함
+    @ManyToOne
+    @JoinColumn(name = "projectId")
+    private Project project;
+
+    @OneToMany(mappedBy = "tag")
+    private List<ProjectTag> projectTags;
 
 }

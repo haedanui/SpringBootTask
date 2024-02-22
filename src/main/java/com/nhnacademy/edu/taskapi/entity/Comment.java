@@ -6,6 +6,11 @@ import lombok.Setter;
 
 import javax.persistence.*;
 
+@NamedEntityGraph(name=
+        "CommentWithTask", attributeNodes = {
+        @NamedAttributeNode("task"),
+})
+
 @Getter
 @Setter
 @Entity
@@ -25,8 +30,8 @@ public class Comment {
     @Column
     private String userNumber;
 
-//    @ManyToOne
-//    @JoinColumn(name = "tasknumber")
-//    private Task task;
+    @ManyToOne
+    @JoinColumn(name = "tasknumber")
+    private Task task;
 
 }

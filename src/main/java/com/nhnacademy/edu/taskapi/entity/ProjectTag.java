@@ -5,11 +5,11 @@ import lombok.*;
 import javax.persistence.*;
 import java.io.Serializable;
 
-//@NamedEntityGraph(name=
-//        "ProjectTagWithTagWithTask", attributeNodes = {
-//        @NamedAttributeNode("tag"),
-//        @NamedAttributeNode("task")
-//})
+@NamedEntityGraph(name=
+        "ProjectTagWithTagWithTask", attributeNodes = {
+        @NamedAttributeNode("tag"),
+        @NamedAttributeNode("task")
+})
 
 @Getter
 @Setter
@@ -21,15 +21,15 @@ public class ProjectTag {
     @EmbeddedId
     PK pk;
 
-//    @MapsId("tagNumber")
-//    @ManyToOne
-//    @JoinColumn(name = "tagNumber")
-//    private Tag tag;
-//
-//    @MapsId("taskNumber")
-//    @ManyToOne
-//    @JoinColumn(name = "taskNumber")
-//    private Task task;
+    @MapsId("tagNumber")
+    @ManyToOne
+    @JoinColumn(name = "tagNumber")
+    private Tag tag;
+
+    @MapsId("taskNumber")
+    @ManyToOne
+    @JoinColumn(name = "taskNumber")
+    private Task task;
 
     @NoArgsConstructor
     @AllArgsConstructor

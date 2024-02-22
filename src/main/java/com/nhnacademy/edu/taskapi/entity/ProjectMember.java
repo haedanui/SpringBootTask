@@ -6,10 +6,10 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
 
-//@NamedEntityGraph(name=
-//        "ProjectMemberWithProject", attributeNodes = {
-//        @NamedAttributeNode("project"),
-//})
+@NamedEntityGraph(name=
+        "ProjectMemberWithProject", attributeNodes = {
+        @NamedAttributeNode("project"),
+})
 
 @Getter
 @Setter

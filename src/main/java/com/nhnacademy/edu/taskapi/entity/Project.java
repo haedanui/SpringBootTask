@@ -5,10 +5,6 @@ import lombok.*;
 import javax.persistence.*;
 import java.util.List;
 
-//@NamedEntityGraph(name=
-//        "ProjectWithProjectMembers", attributeNodes = {
-//        @NamedAttributeNode("projectMembers"),
-//})
 
 @Getter
 @Setter

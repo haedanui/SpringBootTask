@@ -23,14 +23,16 @@ class ProjectRepositoryTest {
     @Test
     void test1() {
         Project project1 = new Project();
-//        project1.setProjectId(1L);
-//        project1.setProjectName("프로젝트1");
-//        project1.setProjectState("진행중");
-//        project1.setProjectAdmin("유승진");
-//        this.entityManager.persist(project1);
-//        Project project = projectRepository.findById(1L).orElse(null);
-//        assertThat(project.getProjectName()).isEqualTo("프로젝트1");
-//        assertThat(project.getProjectAdmin()).isEqualTo("유승진");
+        project1.setProjectId(1L);
+        project1.setProjectName("프로젝트1");
+        project1.setProjectState("진행중");
+        project1.setProjectAdmin("유승진");
+        this.entityManager.persist(project1);
+        Project project = projectRepository.findById(1L).orElse(null);
+        assertThat(project.getProjectName()).isEqualTo("프로젝트1");
+        assertThat(project.getProjectAdmin()).isEqualTo("유승진");
     }
+
+
 
 }
