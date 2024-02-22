@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -21,7 +23,7 @@ class ProjectRepositoryTest {
     private ProjectRepository projectRepository;
 
     @Test
-    void test1() {
+    void getProjectTest() {
         Project project1 = new Project();
         project1.setProjectId(1L);
         project1.setProjectName("프로젝트1");
@@ -33,6 +35,39 @@ class ProjectRepositoryTest {
         assertThat(project.getProjectAdmin()).isEqualTo("유승진");
     }
 
+    @Test
+    void getProjectsAndSaveTest() {
+        Project project1 = new Project();
+        project1.setProjectId(1L);
+        project1.setProjectName("프로젝트1");
+        project1.setProjectState("진행중");
+        project1.setProjectAdmin("유승진");
+        projectRepository.save(project1);
+        List<Project> projects = projectRepository.findAll();
+        assertThat(projects.size()).isEqualTo(1);
 
+        Project project2 = new Project();
+        project2.setProjectId(2L);
+        project2.setProjectName("프로젝트2");
+        project2.setProjectState("완료");
+        project2.setProjectAdmin("페이커");
+        projectRepository.save(project2);
+        projects = projectRepository.findAll();
+        assertThat(projects.size()).isEqualTo(2);
+    }
 
+    @Test
+    void updateStateTest(){
+        Project project1 = new Project();
+        project1.setProjectId(1L);
+        project1.setProjectName("프로젝트1");
+        project1.setProjectState("진행중");
+        project1.setProjectAdmin("유승진");
+        projectRepository.save(project1);
+        assertThat(project1.getProjectState()).isEqualTo("진행중");
+
+        project1.setProjectState("완료");
+        projectRepository.save(project1);
+        assertThat(project1.getProjectState()).isEqualTo("완료");
+    }
 }
