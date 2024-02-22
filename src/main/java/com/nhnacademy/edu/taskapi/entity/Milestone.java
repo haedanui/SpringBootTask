@@ -11,8 +11,8 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @Entity
-@Table(name = "Milestone")
 @EqualsAndHashCode
+@Table(name = "Milestone")
 public class Milestone {
     @Id
     @Column
