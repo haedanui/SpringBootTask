@@ -1,25 +1,33 @@
+###
+###모든 프로젝트를 로드합니다. 근데 기본적인 요청사항이 모든 프로젝트를 불러오는게 아니기 때문에 쓸지는 잘 모르겠네요
 GET http://localhost:9900/projects
 Accept: application/json
 
 
 ###
-GET http://localhost:9900/projects/유승진
+###요청사항에 따른 자신이 속한 Project 목록을 불러오는 api입니다. {} 이 부분을 변경하면 됩니다.
+GET http://localhost:9900/projects/김지윤
 Accept: application/json
 
 
 ###
+###projectId - 프로젝트의 기본키인 projectId
+###userNumber - 프로젝트멤버의 기본키중 하나인 userNumber로 프로젝트를 만들었을 때 프로젝트 멤버테이블에 관리자의 이름을 넣기 위해 필요
+###projectName - 프로젝트의 이름값
+###projectAdmin - 프로젝트의 관리자로 프로젝트가 만들어질때 프로젝트 멤버에 자동으로 추가됩니다.
 POST http://localhost:9900/projects
 Content-Type: application/json
 
 {
-  "projectId": 1,
-  "userNumber": 1,
-  "projectName": "프로젝트1",
+  "projectId": 3,
+  "userNumber": 2,
+  "projectName": "프로젝트2",
   "projectAdmin": "나채현"
 }
 
 
 ###
-DELETE http://localhost:9900/projects/1
+###프로젝트를 지우는 api로 프로젝트가 지워지면 프로젝트에 조인되는 속성인 projectMamber, tag 등 외래키에 쓰이는 프로젝트도 동시에 삭제됩니다.
+DELETE http://localhost:9900/projects/3
 
 Content-Type: application/json
