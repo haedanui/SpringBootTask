@@ -9,5 +9,4 @@ import java.util.List;
 
 public interface ProjectMemberRepository extends JpaRepository<ProjectMember, ProjectMember.PK> {
 
-//    void deleteByProjec
 }
