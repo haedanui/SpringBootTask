@@ -1,7 +1,7 @@
 package com.nhnacademy.edu.taskapi.controller;
 
-import com.nhnacademy.edu.taskapi.domain.NameIncludeProjectDto;
-import com.nhnacademy.edu.taskapi.domain.ProjectCreateDto;
+import com.nhnacademy.edu.taskapi.domain.project.NameIncludeProjectDto;
+import com.nhnacademy.edu.taskapi.domain.project.ProjectCreateDto;
 import com.nhnacademy.edu.taskapi.domain.ResultResponse;
 import com.nhnacademy.edu.taskapi.entity.Project;
 import com.nhnacademy.edu.taskapi.service.ProjectMemberService;
@@ -37,6 +37,11 @@ public class ProjectController {
     public Project createProject(@RequestBody ProjectCreateDto projectCreateDto){
         return projectService.createProject(projectCreateDto);
     }
+
+//    @PutMapping("{projectId}/state")
+//    public Project updateProject(@PathVariable Long projectId,@RequestBody String newState){
+//        return projectService.updateStatusProject(projectId, newState);
+//    }
 
     @DeleteMapping("/{projectId}")
     public ResultResponse deleteAccount(@PathVariable("projectId") Long projectId){

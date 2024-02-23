@@ -1,0 +1,15 @@
+###
+###
+GET http://localhost:9900/projectmembers/3
+Accept: application/json
+
+
+###
+POST http://localhost:9900/projectmembers
+Content-Type: application/json
+
+{
+  "projectId": 3,
+  "userNumber": 1,
+  "userName": "김지윤"
+}

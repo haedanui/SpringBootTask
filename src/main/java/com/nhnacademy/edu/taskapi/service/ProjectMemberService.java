@@ -1,16 +1,16 @@
 package com.nhnacademy.edu.taskapi.service;
 
+import com.nhnacademy.edu.taskapi.domain.projectmember.ProjectMemberCreateDto;
+import com.nhnacademy.edu.taskapi.domain.projectmember.userNameDto;
 import com.nhnacademy.edu.taskapi.entity.ProjectMember;
-import com.nhnacademy.edu.taskapi.repository.ProjectMemberRepository;
-import com.nhnacademy.edu.taskapi.repository.ProjectRepository;
 
 import java.util.List;
 
 public interface ProjectMemberService {
 
-    List<ProjectMember> getProjectMembers();
+    List<userNameDto> getProjectMembers(Long projectId);
 
-    ProjectMember createProjectMember(ProjectMember projectMember);
+    ProjectMember createProjectMember(ProjectMemberCreateDto projectMemberCreateDto);
 
     void deleteProjectMember(ProjectMember.PK pk);
 

@@ -1,10 +1,14 @@
 package com.nhnacademy.edu.taskapi.service.impl;
 
+import com.nhnacademy.edu.taskapi.domain.projectmember.ProjectMemberCreateDto;
+import com.nhnacademy.edu.taskapi.domain.projectmember.userNameDto;
+import com.nhnacademy.edu.taskapi.entity.Project;
 import com.nhnacademy.edu.taskapi.entity.ProjectMember;
 import com.nhnacademy.edu.taskapi.repository.ProjectMemberRepository;
 import com.nhnacademy.edu.taskapi.service.ProjectMemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -19,16 +23,30 @@ public class ProjectMemberServiceImpl implements ProjectMemberService {
     }
 
     @Override
-    public List<ProjectMember> getProjectMembers() {
-        return this.projectMemberRepository.findAll();
+    public List<userNameDto> getProjectMembers(Long projectId) {
+        return this.projectMemberRepository.findByPkProjectId(projectId);
     }
 
     @Override
-    public ProjectMember createProjectMember(ProjectMember projectMember) {
-        return projectMemberRepository.save(projectMember);
+    @Transactional
+    public ProjectMember createProjectMember(ProjectMemberCreateDto projectMemberCreateDto) {
+        Project project = new Project();
+        project.setProjectId(projectMemberCreateDto.getProjectId());
+
+        ProjectMember projectMember = new ProjectMember();
+        ProjectMember.PK pk = new ProjectMember.PK();
+        pk.setProjectId(projectMemberCreateDto.getProjectId());
+        pk.setUserNumber(projectMemberCreateDto.getUserNumber());
+        projectMember.setPk(pk);
+        projectMember.setUserName(projectMemberCreateDto.getUserName());
+        projectMember.setProject(project);
+
+        projectMemberRepository.save(projectMember);
+        return projectMember;
     }
 
     @Override
+    @Transactional
     public void deleteProjectMember(ProjectMember.PK pk) {
         projectMemberRepository.deleteById(pk);
     }
