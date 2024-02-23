@@ -16,6 +16,8 @@ import java.util.List;
 @Entity
 @Table(name = "ProjectMember")
 @EqualsAndHashCode
+@NoArgsConstructor
+@AllArgsConstructor
 public class ProjectMember {
 
     @EmbeddedId

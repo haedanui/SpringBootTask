@@ -15,6 +15,8 @@ import java.util.List;
 @AllArgsConstructor
 public class Project {
 
+
+
     @Id
     @Column
     private Long projectId;
@@ -28,10 +30,17 @@ public class Project {
     @Column
     private String projectAdmin;
 
-    @OneToMany(mappedBy = "project")
+    @OneToMany(mappedBy = "project", cascade = CascadeType.ALL)
     private List<ProjectMember> projectMembers;
 
-//    @OneToMany(mappedBy = "project")
+    public Project(Long projectId, String projectName, String projectState, String projectAdmin) {
+        this.projectId = projectId;
+        this.projectName = projectName;
+        this.projectState = projectState;
+        this.projectAdmin = projectAdmin;
+    }
+
+    //    @OneToMany(mappedBy = "project")
 //    private List<Tag> tags;
 
 //    @OneToMany(mappedBy = "project")

@@ -5,8 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.sql.Timestamp;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @NamedEntityGraph(name=
         "MilestoneWithTaskWithProject", attributeNodes = {
@@ -25,10 +24,10 @@ public class Milestone {
     private Long milestoneNumber;
 
     @Column
-    private LocalDateTime dateStart;
+    private LocalDate dateStart;
 
     @Column
-    private LocalDateTime dateFinish;
+    private LocalDate dateFinish;
 
 //이부분 오류남
     @OneToOne(fetch = FetchType.LAZY)
