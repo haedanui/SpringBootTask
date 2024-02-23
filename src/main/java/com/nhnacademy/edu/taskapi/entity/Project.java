@@ -12,9 +12,8 @@ import java.util.List;
 @Table(name = "Project")
 @EqualsAndHashCode
 @NoArgsConstructor
-@AllArgsConstructor
+//@AllArgsConstructor
 public class Project {
-
 
 
     @Id
@@ -30,7 +29,7 @@ public class Project {
     @Column
     private String projectAdmin;
 
-    @OneToMany(mappedBy = "project", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "project", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<ProjectMember> projectMembers;
 
     public Project(Long projectId, String projectName, String projectState, String projectAdmin) {
@@ -40,7 +39,7 @@ public class Project {
         this.projectAdmin = projectAdmin;
     }
 
-    //    @OneToMany(mappedBy = "project")
+//    @OneToMany(mappedBy = "project")
 //    private List<Tag> tags;
 
 //    @OneToMany(mappedBy = "project")
