@@ -26,6 +26,10 @@ public class ProjectMember {
     @Column
     private String userName;
 
+    public ProjectMember(PK pk, String userName) {
+        this.pk = pk;
+        this.userName = userName;
+    }
 
     //조인
     @MapsId("projectId")

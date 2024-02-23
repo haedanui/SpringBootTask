@@ -1,8 +1,6 @@
 package com.nhnacademy.edu.taskapi.entity;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.List;
@@ -17,6 +15,8 @@ import java.util.List;
 @Entity
 @Table(name = "Tag")
 @EqualsAndHashCode
+@NoArgsConstructor
+@AllArgsConstructor
 public class Tag {
 
     @Id
@@ -32,7 +32,7 @@ public class Tag {
     @JoinColumn(name = "projectId")
     private Project project;
 
-    @OneToMany(mappedBy = "tag")
-    private List<ProjectTag> projectTags;
+//    @OneToMany(mappedBy = "tag")
+//    private List<ProjectTag> projectTags;
 
 }

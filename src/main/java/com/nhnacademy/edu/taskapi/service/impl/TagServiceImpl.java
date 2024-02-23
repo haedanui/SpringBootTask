@@ -1,5 +1,6 @@
 package com.nhnacademy.edu.taskapi.service.impl;
 
+import com.nhnacademy.edu.taskapi.entity.ProjectTag;
 import com.nhnacademy.edu.taskapi.entity.Tag;
 import com.nhnacademy.edu.taskapi.repository.TagRepository;
 import com.nhnacademy.edu.taskapi.service.TagService;
@@ -30,12 +31,12 @@ public class TagServiceImpl implements TagService {
     }
 
     @Override
-    public Tag addTag(Tag tag) {
-        return null;
+    public Tag createTag(Tag tag) {
+        return tagRepository.save(tag);
     }
 
     @Override
     public void delete(Long tagNumber) {
-
+        tagRepository.deleteById(tagNumber);
     }
 }

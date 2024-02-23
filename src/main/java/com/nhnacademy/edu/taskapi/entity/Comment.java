@@ -1,8 +1,6 @@
 package com.nhnacademy.edu.taskapi.entity;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -16,22 +14,26 @@ import javax.persistence.*;
 @Entity
 @Table(name = "Comment")
 @EqualsAndHashCode
+@NoArgsConstructor
+@AllArgsConstructor
 public class Comment {
     @Id
     @Column
     private Long commentNumber;
 
     @Column
-    private Long taskNumber;
-
-    @Column
     private String commentContent;
 
     @Column
-    private String userNumber;
+    private String userName;
 
     @ManyToOne
-    @JoinColumn(name = "tasknumber")
+    @JoinColumn(name = "taskNumber")
     private Task task;
 
+    public Comment(Long commentNumber, String commentContent, String userName) {
+        this.commentNumber = commentNumber;
+        this.commentContent = commentContent;
+        this.userName = userName;
+    }
 }

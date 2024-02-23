@@ -29,7 +29,7 @@ public class ProjectMemberServiceImpl implements ProjectMemberService {
     }
 
     @Override
-    public void deleteProjectMember(Long userNumber) {
-        projectMemberRepository.deleteById(userNumber);
+    public void deleteProjectMember(ProjectMember.PK pk) {
+        projectMemberRepository.deleteById(pk);
     }
 }

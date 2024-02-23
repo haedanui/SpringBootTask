@@ -77,7 +77,7 @@ class ProjectRepositoryTest {
     }
 
     @Test
-    void deleteStateTest(){
+    void deleteProjectTest(){
         Project project1 = new Project(1L, "프로젝트1","진행중", "유승진");
         Project project2 = new Project(2L, "프로젝트2", "완료", "페이커");
         projectRepository.save(project1);
@@ -87,5 +87,6 @@ class ProjectRepositoryTest {
         projectRepository.deleteById(1L);
         projects = projectRepository.findAll();
         assertThat(projects.size()).isEqualTo(1);
+        assertThat(projects.get(0).getProjectAdmin()).isEqualTo("페이커");
     }
 }

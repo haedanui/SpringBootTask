@@ -31,7 +31,7 @@ public class ProjectTagServiceImpl implements ProjectTagService {
     }
 
     @Override
-    public ProjectTag addProjectTag(ProjectTag projectTag) {
+    public ProjectTag createProjectTag(ProjectTag projectTag) {
         return projectTagRepository.save(projectTag);
     }
 

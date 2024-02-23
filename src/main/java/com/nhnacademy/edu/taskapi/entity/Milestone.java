@@ -1,15 +1,12 @@
 package com.nhnacademy.edu.taskapi.entity;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 
 @NamedEntityGraph(name=
         "MilestoneWithTaskWithProject", attributeNodes = {
-        @NamedAttributeNode("task"),
         @NamedAttributeNode("project")
 })
 
@@ -18,6 +15,8 @@ import java.time.LocalDate;
 @Entity
 @EqualsAndHashCode
 @Table(name = "Milestone")
+@NoArgsConstructor
+@AllArgsConstructor
 public class Milestone {
     @Id
     @Column
@@ -29,13 +28,17 @@ public class Milestone {
     @Column
     private LocalDate dateFinish;
 
-//이부분 오류남
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "taskNumber")
-    private Task task;
-
     @ManyToOne
     @JoinColumn(name = "projectId")
     private Project project;
+
+    public Milestone(Long milestoneNumber, LocalDate dateStart, LocalDate dateFinish) {
+        this.milestoneNumber = milestoneNumber;
+        this.dateStart = dateStart;
+        this.dateFinish = dateFinish;
+    }
+
+
+
 
 }

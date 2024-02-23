@@ -10,7 +10,7 @@ public interface ProjectTagService {
 
     ProjectTag getProjectTag(Long tagNumber, Long taskNumber);
 
-    ProjectTag addProjectTag(ProjectTag projectTag);
+    ProjectTag createProjectTag(ProjectTag projectTag);
 
     void deleteProjectTag(Long tagNumber, Long taskNumber);
 }

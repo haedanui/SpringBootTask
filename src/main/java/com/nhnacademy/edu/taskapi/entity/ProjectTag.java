@@ -16,6 +16,8 @@ import java.io.Serializable;
 @Entity
 @Table(name = "ProjectTag")
 @EqualsAndHashCode
+@NoArgsConstructor
+@AllArgsConstructor
 public class ProjectTag {
 
     @EmbeddedId

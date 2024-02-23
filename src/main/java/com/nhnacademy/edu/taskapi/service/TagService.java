@@ -1,5 +1,6 @@
 package com.nhnacademy.edu.taskapi.service;
 
+import com.nhnacademy.edu.taskapi.entity.ProjectTag;
 import com.nhnacademy.edu.taskapi.entity.Tag;
 
 import java.util.List;
@@ -10,7 +11,7 @@ public interface TagService {
 
     Tag getTag(Long tagNumber);
 
-    Tag addTag(Tag tag);
+    Tag createTag(Tag tag);
 
     void delete(Long tagNumber);
 }
