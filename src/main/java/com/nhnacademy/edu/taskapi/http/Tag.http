@@ -1,0 +1,21 @@
+GET http://localhost:9900/tags
+Accept: application/json
+
+
+###
+GET http://localhost:9900/tags/3
+Accept: application/json
+
+
+###
+POST http://localhost:9900/tags/3
+Content-Type: application/json
+
+{
+  "tagName": "살려주세요"
+}
+
+
+###
+DELETE http://localhost:9900/tags/7
+Accept: application/json

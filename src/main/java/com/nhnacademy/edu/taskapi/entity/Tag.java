@@ -28,7 +28,6 @@ public class Tag {
     private String tagName;
 
 
-    //작동 안함
     @ManyToOne
     @JoinColumn(name = "projectId")
     private Project project;
