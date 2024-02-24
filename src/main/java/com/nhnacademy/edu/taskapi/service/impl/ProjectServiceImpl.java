@@ -5,6 +5,7 @@ import com.nhnacademy.edu.taskapi.domain.project.ProjectCreateDto;
 import com.nhnacademy.edu.taskapi.entity.Project;
 import com.nhnacademy.edu.taskapi.entity.ProjectMember;
 import com.nhnacademy.edu.taskapi.exception.ProjectAlreadyExistsException;
+import com.nhnacademy.edu.taskapi.exception.ProjectNotFoundException;
 import com.nhnacademy.edu.taskapi.repository.ProjectMemberRepository;
 import com.nhnacademy.edu.taskapi.repository.ProjectRepository;
 import com.nhnacademy.edu.taskapi.service.ProjectService;
@@ -27,8 +28,7 @@ public class ProjectServiceImpl implements ProjectService {
     }
 
 
-
-    public List<NameIncludeProjectDto> getProjects(){
+    public List<NameIncludeProjectDto> getProjects() {
         return projectRepository.findProjectsByMember();
     }
 
@@ -49,7 +49,7 @@ public class ProjectServiceImpl implements ProjectService {
     @Override
     @Transactional
     public Project createProject(ProjectCreateDto projectCreateDto) {
-        if(projectRepository.existsProjectByProjectId(projectCreateDto.getProjectId())){
+        if (projectRepository.existsProjectByProjectId(projectCreateDto.getProjectId())) {
             throw new ProjectAlreadyExistsException();
         }
         Project project = new Project();
@@ -77,8 +77,10 @@ public class ProjectServiceImpl implements ProjectService {
     @Transactional
     public Project updateStatusProject(Long projectId, String state) {
         Project project = projectRepository.findById(projectId).orElse(null);
+        if (project == null) {
+            throw new ProjectNotFoundException();
+        }
         project.setProjectState(state);
-
         return projectRepository.save(project);
     }
 

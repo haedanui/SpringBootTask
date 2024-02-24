@@ -13,3 +13,8 @@ Content-Type: application/json
   "userNumber": 1,
   "userName": "김지윤"
 }
+
+
+###
+DELETE http://localhost:9900/projectmembers
+Accept: application/json

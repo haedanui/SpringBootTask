@@ -1,5 +1,6 @@
 package com.nhnacademy.edu.taskapi.controller;
 
+import com.nhnacademy.edu.taskapi.domain.ResultResponse;
 import com.nhnacademy.edu.taskapi.domain.projectmember.ProjectMemberCreateDto;
 import com.nhnacademy.edu.taskapi.domain.projectmember.userNameDto;
 import com.nhnacademy.edu.taskapi.entity.ProjectMember;
@@ -26,4 +27,10 @@ public class ProjectMemberController {
     public ProjectMember createProjectMember(@RequestBody ProjectMemberCreateDto projectMemberCreateDto) {
         return projectMemberService.createProjectMember(projectMemberCreateDto);
     }
+
+//    @DeleteMapping("/{userNumber}")
+//    public ResultResponse deleteProject(@PathVariable("userNumber") Long userNumber){
+//        projectMemberService.deleteProjectMember();
+//        return new ResultResponse("멤버 삭제가 완료되었습니다.");
+//    }
 }
