@@ -19,6 +19,7 @@ import javax.persistence.*;
 public class Comment {
     @Id
     @Column
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long commentNumber;
 
     @Column

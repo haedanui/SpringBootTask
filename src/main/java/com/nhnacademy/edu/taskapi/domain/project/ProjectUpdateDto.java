@@ -9,8 +9,6 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class ProjectCreateDto {
-    private String projectName;
-    private String projectAdmin;
-
+public class ProjectUpdateDto {
+    String projectState;
 }

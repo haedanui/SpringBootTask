@@ -21,6 +21,7 @@ public class Tag {
 
     @Id
     @Column
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long tagNumber;
 
     @Column

@@ -1,10 +1,11 @@
 package com.nhnacademy.edu.taskapi.controller;
 
-import com.nhnacademy.edu.taskapi.domain.project.NameIncludeProjectDto;
+
 import com.nhnacademy.edu.taskapi.domain.project.ProjectCreateDto;
 import com.nhnacademy.edu.taskapi.domain.ResultResponse;
 import com.nhnacademy.edu.taskapi.domain.project.ProjectInfoDto;
 //import com.nhnacademy.edu.taskapi.domain.project.ProjectResponseDto;
+import com.nhnacademy.edu.taskapi.domain.project.ProjectUpdateDto;
 import com.nhnacademy.edu.taskapi.entity.Project;
 import com.nhnacademy.edu.taskapi.exception.ProjectAlreadyExistsException;
 import com.nhnacademy.edu.taskapi.service.ProjectMemberService;
@@ -40,23 +41,15 @@ public class ProjectController {
         return projectService.getProjectsIncludeName(userName);
     }
 
-    @GetMapping("/{projectId}")
-    public ProjectInfoDto getProject(@PathVariable("projectId") Long projectId) {
-        return projectService.getProject(projectId);
-    }
 
     @PostMapping
     public Project createProject(@RequestBody ProjectCreateDto projectCreateDto){
-        Long projectId = projectCreateDto.getProjectId();
-        if(projectService.getProject(projectId) !=null){
-            throw new ProjectAlreadyExistsException();
-        }
         return projectService.createProject(projectCreateDto);
     }
 
     @PutMapping("{projectId}/state")
-    public Project updateProject(@PathVariable Long projectId,@RequestBody String newState){
-        return projectService.updateStatusProject(projectId, newState);
+    public Project updateProject(@PathVariable Long projectId,@RequestBody ProjectUpdateDto projectUpdateDto){
+        return projectService.updateStatusProject(projectId, projectUpdateDto.getProjectState());
     }
 
     @DeleteMapping("/{projectId}")
