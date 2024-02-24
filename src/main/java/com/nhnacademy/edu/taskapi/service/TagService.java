@@ -1,5 +1,6 @@
 package com.nhnacademy.edu.taskapi.service;
 
+import com.nhnacademy.edu.taskapi.domain.tag.TagNameDto;
 import com.nhnacademy.edu.taskapi.entity.ProjectTag;
 import com.nhnacademy.edu.taskapi.entity.Tag;
 
@@ -7,7 +8,7 @@ import java.util.List;
 
 public interface TagService {
 
-    List<Tag> getTags();
+    List<TagNameDto> getTags();
 
     Tag getTag(Long tagNumber);
 

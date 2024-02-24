@@ -1,0 +1,4 @@
+GET http://localhost:9900/tags
+Accept: application/json
+
+GET http://localhost:9900/tags/17

@@ -21,6 +21,7 @@ public class Task {
 
     @Id
     @Column
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long taskNumber;
 
     @Column

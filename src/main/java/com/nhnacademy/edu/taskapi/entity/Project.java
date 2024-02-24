@@ -12,7 +12,7 @@ import java.util.List;
 @Table(name = "Project")
 @EqualsAndHashCode
 @NoArgsConstructor
-@AllArgsConstructor
+
 public class Project {
 
 

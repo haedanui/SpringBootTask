@@ -20,6 +20,7 @@ import java.time.LocalDate;
 public class Milestone {
     @Id
     @Column
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long milestoneNumber;
 
     @Column

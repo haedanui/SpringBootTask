@@ -8,16 +8,13 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 
 public interface ProjectRepository extends JpaRepository<Project, Long> {
-    @Query("SELECT p FROM Project p JOIN p.projectMembers pm WHERE pm.userName = :userName")
+    @Query("SELECT new com.nhnacademy.edu.taskapi.domain.project.ProjectInfoDto(pm.project.projectId, pm.project.projectName, pm.project.projectState, pm.project.projectAdmin) FROM ProjectMember pm WHERE pm.userName = :userName")
     List<ProjectInfoDto> findProjectsByMemberUserName(String userName);
 
-    @Query("SELECT p FROM Project p JOIN p.projectMembers pm")
+    // 모든 프로젝트 정보를 조회합니다.
+    @Query("SELECT new com.nhnacademy.edu.taskapi.domain.project.ProjectInfoDto(pm.project.projectId, pm.project.projectName, pm.project.projectState, pm.project.projectAdmin) FROM ProjectMember pm")
     List<ProjectInfoDto> findProjectsByMember();
 
     Project findByProjectName(String projectName);
 
-
-
-    //중복유무
-    boolean existsProjectByProjectId(Long projectId);
 }

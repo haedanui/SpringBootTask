@@ -1,5 +1,6 @@
 package com.nhnacademy.edu.taskapi.service.impl;
 
+import com.nhnacademy.edu.taskapi.domain.tag.TagNameDto;
 import com.nhnacademy.edu.taskapi.entity.ProjectTag;
 import com.nhnacademy.edu.taskapi.entity.Tag;
 import com.nhnacademy.edu.taskapi.repository.TagRepository;
@@ -21,9 +22,14 @@ public class TagServiceImpl implements TagService {
 
 
     @Override
-    public List<Tag> getTags() {
-        return tagRepository.findAll();
+    public List<TagNameDto> getTags() {
+        return tagRepository.findBy();
     }
+
+//    @Override
+//    public List<TagNameDto> getProjectTags(Long projectId){
+//
+//    }
 
     @Override
     public Tag getTag(Long tagNumber) {
