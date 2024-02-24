@@ -6,7 +6,7 @@ Accept: application/json
 
 ###
 ###요청사항에 따른 자신이 속한 Project 목록을 불러오는 api입니다. prjects/{} 이 부분을 변경하면 됩니다.
-GET http://localhost:9900/projects/나채현
+GET http://localhost:9900/projects/김지윤
 Accept: application/json
 
 
@@ -19,16 +19,27 @@ POST http://localhost:9900/projects
 Content-Type: application/json
 
 {
-  "projectName": "프로젝트5",
-  "projectAdmin": "나채현"
+  "projectName": "프로젝트3",
+  "projectAdmin": "김지윤"
+}
+
+
+###
+### json의 value 부분에 수정할 값을 넣으시면 됩니다.
+###
+PUT http://localhost:9900/projects/17/state
+Content-Type: application/json
+
+{
+  "projectState": "진행중"
 }
 
 
 
 
-
-
-###프로젝트를 지우는 api로 프로젝트가 지워지면 프로젝트에 조인되는 속성인 projectMamber, tag 등 외래키에 쓰이는 프로젝트도 동시에 삭제됩니다.
+###
+### 프로젝트를 지우는 api로 프로젝트가 지워지면 프로젝트에 조인되는 속성인 projectMamber, tag 등 외래키에 쓰이는 프로젝트도 동시에 삭제됩니다.
+###
 DELETE http://localhost:9900/projects/16
 
 Content-Type: application/json

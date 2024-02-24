@@ -1,6 +1,6 @@
 ###
 ###
-GET http://localhost:9900/projectmembers/3
+GET http://localhost:9900/projectmembers/17
 Accept: application/json
 
 
@@ -9,12 +9,11 @@ POST http://localhost:9900/projectmembers
 Content-Type: application/json
 
 {
-  "projectId": 3,
-  "userNumber": 1,
-  "userName": "김지윤"
+  "projectNumber": 17,
+  "userName": "유승진"
 }
 
 
 ###
-DELETE http://localhost:9900/projectmembers
+DELETE http://localhost:9900/projectmembers/
 Accept: application/json

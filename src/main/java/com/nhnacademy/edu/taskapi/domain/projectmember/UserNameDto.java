@@ -1,5 +1,5 @@
 package com.nhnacademy.edu.taskapi.domain.projectmember;
 
-public interface userNameDto {
+public interface UserNameDto {
     String getUserName();
 }

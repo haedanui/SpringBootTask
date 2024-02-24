@@ -3,6 +3,7 @@ package com.nhnacademy.edu.taskapi.controller;
 import com.nhnacademy.edu.taskapi.domain.project.ProjectInfoDto;
 import com.nhnacademy.edu.taskapi.domain.project.ProjectCreateDto;
 import com.nhnacademy.edu.taskapi.domain.ResultResponse;
+import com.nhnacademy.edu.taskapi.domain.project.ProjectUpdateDto;
 import com.nhnacademy.edu.taskapi.entity.Project;
 import com.nhnacademy.edu.taskapi.service.ProjectMemberService;
 import com.nhnacademy.edu.taskapi.service.ProjectService;
@@ -39,8 +40,8 @@ public class ProjectController {
     }
 
     @PutMapping("{projectId}/state")
-    public Project updateProject(@PathVariable Long projectId,@RequestBody String newState){
-        return projectService.updateStatusProject(projectId, newState);
+    public Project updateProject(@PathVariable Long projectId,@RequestBody ProjectUpdateDto projectUpdateDto){
+        return projectService.updateStatusProject(projectId, projectUpdateDto.getProjectState());
     }
 
     @DeleteMapping("/{projectId}")

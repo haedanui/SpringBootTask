@@ -1,7 +1,7 @@
 package com.nhnacademy.edu.taskapi.service.impl;
 
 import com.nhnacademy.edu.taskapi.domain.projectmember.ProjectMemberCreateDto;
-import com.nhnacademy.edu.taskapi.domain.projectmember.userNameDto;
+import com.nhnacademy.edu.taskapi.domain.projectmember.UserNameDto;
 import com.nhnacademy.edu.taskapi.entity.Project;
 import com.nhnacademy.edu.taskapi.entity.ProjectMember;
 import com.nhnacademy.edu.taskapi.repository.ProjectMemberRepository;
@@ -23,30 +23,20 @@ public class ProjectMemberServiceImpl implements ProjectMemberService {
     }
 
     @Override
-    public List<userNameDto> getProjectMembers(Long projectId) {
-//        return this.projectMemberRepository.findByPkProjectId(projectId);
-        return null;
+    public List<UserNameDto> getProjectMembers(Long projectId) {
+        return this.projectMemberRepository.findAllByProjectNumber(projectId);
     }
 
     @Override
     @Transactional
     public ProjectMember createProjectMember(ProjectMemberCreateDto projectMemberCreateDto) {
         Project project = new Project();
-        project.setProjectId(projectMemberCreateDto.getProjectId());
+        project.setProjectId(projectMemberCreateDto.getProjectNumber());
 
         ProjectMember projectMember = new ProjectMember();
-        projectMember.setUserNumber(projectMemberCreateDto.getUserNumber());
         projectMember.setUserName(projectMemberCreateDto.getUserName());
-
-
-//        ProjectMember projectMember = new ProjectMember();
-//        ProjectMember.PK pk = new ProjectMember.PK();
-//        pk.setProjectId(projectMemberCreateDto.getProjectId());
-//        pk.setUserNumber(projectMemberCreateDto.getUserNumber());
-//        projectMember.setPk(pk);
-//        projectMember.setUserName(projectMemberCreateDto.getUserName());
-//        projectMember.setProject(project);
-
+        projectMember.setProjectNumber(projectMemberCreateDto.getProjectNumber());
+        projectMember.setProject(project);
         projectMemberRepository.save(projectMember);
         return projectMember;
     }

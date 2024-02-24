@@ -1,4 +1,4 @@
-package com.nhnacademy.edu.taskapi.domain.projectmember;
+package com.nhnacademy.edu.taskapi.domain.project;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,7 +9,6 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class ProjectMemberCreateDto {
-    private Long projectNumber;
-    private String userName;
+public class ProjectUpdateDto {
+    String projectState;
 }
