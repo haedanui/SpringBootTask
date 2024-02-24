@@ -1,0 +1,38 @@
+// project 목록 뭐 있는지 먼저 확인
+GET http://localhost:9900/projects
+Accept: application/json
+
+###
+// 프로젝트 아이디 3번에 task 추가
+POST http://localhost:9900/projects/3/task
+Content-Type: application/json
+
+{
+  "taskTitle" : "태스크 제목 테스트",
+  "taskContent": "태스크 내용 테스트"
+}
+
+###
+// 프로젝트 3번이 가지고 있는 task들 출력
+GET http://localhost:9900/projects/3/task
+Accept: application/json
+
+###
+// 프로젝트 3번의 태스크 2번
+GET http://localhost:9900/projects/3/task/2
+Accept: application/json
+
+###
+// 프로젝트 3번의 태스크 2번 제목, 내용, 상태 수정
+PUT http://localhost:9900/projects/3/task/2
+content-Type: application/json
+
+{
+  "taskTitle" : "제목 수정함",
+  "taskContent" : "내용 수정함",
+  "taskState" : "진행중"
+}
+
+###
+// 프로젝트 3번의 태스크 2번 삭제
+DELETE http://localhost:9900/projects/3/task/2

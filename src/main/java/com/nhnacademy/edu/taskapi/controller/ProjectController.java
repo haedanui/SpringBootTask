@@ -3,14 +3,20 @@ package com.nhnacademy.edu.taskapi.controller;
 import com.nhnacademy.edu.taskapi.domain.project.NameIncludeProjectDto;
 import com.nhnacademy.edu.taskapi.domain.project.ProjectCreateDto;
 import com.nhnacademy.edu.taskapi.domain.ResultResponse;
+import com.nhnacademy.edu.taskapi.domain.project.ProjectInfoDto;
+//import com.nhnacademy.edu.taskapi.domain.project.ProjectResponseDto;
 import com.nhnacademy.edu.taskapi.entity.Project;
 import com.nhnacademy.edu.taskapi.exception.ProjectAlreadyExistsException;
 import com.nhnacademy.edu.taskapi.service.ProjectMemberService;
 import com.nhnacademy.edu.taskapi.service.ProjectService;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+
+@Slf4j
 @RestController
 @RequestMapping("/projects")
 public class ProjectController {
@@ -24,14 +30,19 @@ public class ProjectController {
     }
 
     @GetMapping
-    public List<NameIncludeProjectDto> getProjects(){
+    public List<ProjectInfoDto> getProjects(){
         return projectService.getProjects();
     }
 
     //TODO (Project 멤버는 자신이 속한 Project 목록만 확인할 수 있습니다.)부분
     @GetMapping("/{userName}")
-    public List<NameIncludeProjectDto> getProjectsIncludeName(@PathVariable("userName") String userName){
+    public List<ProjectInfoDto> getProjectsIncludeName(@PathVariable("userName") String userName){
         return projectService.getProjectsIncludeName(userName);
+    }
+
+    @GetMapping("/{projectId}")
+    public ProjectInfoDto getProject(@PathVariable("projectId") Long projectId) {
+        return projectService.getProject(projectId);
     }
 
     @PostMapping
@@ -53,7 +64,5 @@ public class ProjectController {
         projectService.deleteProject(projectId);
         return new ResultResponse("프로젝트 삭제가 완료되었습니다.");
     }
-
-
 
 }

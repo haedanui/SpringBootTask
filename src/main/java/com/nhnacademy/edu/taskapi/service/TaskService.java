@@ -1,18 +1,20 @@
 package com.nhnacademy.edu.taskapi.service;
 
+import com.nhnacademy.edu.taskapi.domain.task.TaskCreateDto;
+import com.nhnacademy.edu.taskapi.domain.task.TaskUpdateDto;
 import com.nhnacademy.edu.taskapi.entity.Task;
 
 import java.util.List;
 
 public interface TaskService {
 
-    List<Task> getTasks();
+    List<Task> getTasks(Long projectId);
 
-    Task getTask(Long taskNumber);
+    Task getTask(Long projectId, Long taskNumber);
 
-    Task createTask(Task task);
+    Task createTask(Long projectId, TaskCreateDto taskCreateDto);
 
-    Task updateTask(Task task);
+    Task updateTask(Long projectId, Long taskNumber, TaskUpdateDto taskUpdateDto);
 
-    void deleteTask(Long taskNumber);
+    void deleteTask(Long projectId, Long taskNumber);
 }

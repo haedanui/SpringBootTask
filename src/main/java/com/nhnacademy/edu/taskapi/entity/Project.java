@@ -1,5 +1,6 @@
 package com.nhnacademy.edu.taskapi.entity;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
 import javax.persistence.*;
@@ -10,34 +11,30 @@ import java.util.List;
 @Setter
 @Entity
 @Table(name = "Project")
-@EqualsAndHashCode
 @NoArgsConstructor
-//@AllArgsConstructor
+@AllArgsConstructor
 public class Project {
 
 
     @Id
-    @Column
+//    @Column(name = "projectId")
+    @JsonProperty("projectId")
     private Long projectId;
 
     @Column
+    @JsonProperty("projectName")
     private String projectName;
 
     @Column
+    @JsonProperty("projectState")
     private String projectState;
 
     @Column
+    @JsonProperty("projectAdmin")
     private String projectAdmin;
 
-    @OneToMany(mappedBy = "project", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<ProjectMember> projectMembers;
-
-    public Project(Long projectId, String projectName, String projectState, String projectAdmin) {
-        this.projectId = projectId;
-        this.projectName = projectName;
-        this.projectState = projectState;
-        this.projectAdmin = projectAdmin;
-    }
+//    @OneToMany(mappedBy = "project", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+//    private List<ProjectMember> projectMembers;
 
 //    @OneToMany(mappedBy = "project")
 //    private List<Tag> tags;

@@ -2,6 +2,8 @@ package com.nhnacademy.edu.taskapi.service.impl;
 
 import com.nhnacademy.edu.taskapi.domain.project.NameIncludeProjectDto;
 import com.nhnacademy.edu.taskapi.domain.project.ProjectCreateDto;
+import com.nhnacademy.edu.taskapi.domain.project.ProjectInfoDto;
+//import com.nhnacademy.edu.taskapi.domain.project.ProjectResponseDto;
 import com.nhnacademy.edu.taskapi.entity.Project;
 import com.nhnacademy.edu.taskapi.entity.ProjectMember;
 import com.nhnacademy.edu.taskapi.exception.ProjectAlreadyExistsException;
@@ -9,6 +11,7 @@ import com.nhnacademy.edu.taskapi.exception.ProjectNotFoundException;
 import com.nhnacademy.edu.taskapi.repository.ProjectMemberRepository;
 import com.nhnacademy.edu.taskapi.repository.ProjectRepository;
 import com.nhnacademy.edu.taskapi.service.ProjectService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,6 +19,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
+@Slf4j
 public class ProjectServiceImpl implements ProjectService {
 
     ProjectRepository projectRepository;
@@ -27,22 +31,20 @@ public class ProjectServiceImpl implements ProjectService {
         this.projectMemberRepository = projectMemberRepository;
     }
 
-
-    public List<NameIncludeProjectDto> getProjects() {
+    @Override
+    public List<ProjectInfoDto> getProjects() {
         return projectRepository.findProjectsByMember();
     }
 
     @Override
-    @Transactional
-    public List<NameIncludeProjectDto> getProjectsIncludeName(String userName) {
-        return projectRepository.findProjectsByMemberUserName(userName);
+    public ProjectInfoDto getProject(Long projectId) {
+        return projectRepository.findByProjectId(projectId);
     }
-
 
     @Override
     @Transactional
-    public Project getProject(Long projectId) {
-        return projectRepository.findById(projectId).orElse(null);
+    public List<ProjectInfoDto> getProjectsIncludeName(String userName) {
+        return projectRepository.findProjectsByMemberUserName(userName);
     }
 
     //프로젝트를 생성합니다.
@@ -89,4 +91,19 @@ public class ProjectServiceImpl implements ProjectService {
     public void deleteProject(Long projectId) {
         projectRepository.deleteById(projectId);
     }
+
+
+    /*
+    @Override
+    @Transactional
+    public ProjectResponseDto getProject(Long projectId) {
+        return projectRepository.findByProjectId(projectId);
+    }
+
+    @Override
+    public List<Project> getAllProjects() {
+        return projectRepository.findAll();
+    }
+     */
+
 }

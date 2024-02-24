@@ -1,14 +1,9 @@
 package com.nhnacademy.edu.taskapi.domain.project;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
-@Getter
-@Setter
+@Data
 @AllArgsConstructor
-@NoArgsConstructor
 public class ProjectCreateDto {
     private Long projectId;
     private Long userNumber;

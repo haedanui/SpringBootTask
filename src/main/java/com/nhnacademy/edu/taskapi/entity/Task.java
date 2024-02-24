@@ -20,6 +20,7 @@ import java.util.List;
 public class Task {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
     private Long taskNumber;
 
@@ -40,8 +41,8 @@ public class Task {
 //    @OneToMany(mappedBy = "task")
 //    private List<Comment> comments;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    private Milestone milestone;
+//    @OneToOne(fetch = FetchType.LAZY)
+//    private Milestone milestone;
 
     @ManyToOne
     @JoinColumn(name = "projectId")
