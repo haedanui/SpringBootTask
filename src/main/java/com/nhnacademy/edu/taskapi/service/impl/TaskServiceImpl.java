@@ -1,7 +1,9 @@
 package com.nhnacademy.edu.taskapi.service.impl;
 
 //import com.nhnacademy.edu.taskapi.domain.project.ProjectResponseDto;
+
 import com.nhnacademy.edu.taskapi.domain.task.TaskCreateDto;
+import com.nhnacademy.edu.taskapi.domain.task.TaskResponseDto;
 import com.nhnacademy.edu.taskapi.domain.task.TaskUpdateDto;
 import com.nhnacademy.edu.taskapi.entity.Project;
 import com.nhnacademy.edu.taskapi.entity.Task;
@@ -10,12 +12,9 @@ import com.nhnacademy.edu.taskapi.repository.TaskRepository;
 import com.nhnacademy.edu.taskapi.service.TaskService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @Slf4j
@@ -26,12 +25,12 @@ public class TaskServiceImpl implements TaskService {
     private final ProjectRepository projectRepository;
 
     @Override
-    public List<Task> getTasks(Long projectId) {
+    public List<TaskResponseDto> getTasks(Long projectId) {
         return taskRepository.findTaskByProject_ProjectId(projectId);
     }
 
     @Override
-    public Task getTask(Long projectId, Long taskNumber) {
+    public TaskResponseDto getTask(Long projectId, Long taskNumber) {
         return taskRepository.findTaskByProject_ProjectIdAndTaskNumber(projectId, taskNumber);
     }
 

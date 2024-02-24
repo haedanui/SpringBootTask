@@ -18,13 +18,13 @@ GET http://localhost:9900/projects/3/task
 Accept: application/json
 
 ###
-// 프로젝트 3번의 태스크 2번
-GET http://localhost:9900/projects/3/task/2
+// 프로젝트 3번의 태스크 3번
+GET http://localhost:9900/projects/3/task/3
 Accept: application/json
 
 ###
-// 프로젝트 3번의 태스크 2번 제목, 내용, 상태 수정
-PUT http://localhost:9900/projects/3/task/2
+// 프로젝트 3번의 태스크 3번 제목, 내용, 상태 수정
+PUT http://localhost:9900/projects/3/task/3
 content-Type: application/json
 
 {
@@ -35,4 +35,4 @@ content-Type: application/json
 
 ###
 // 프로젝트 3번의 태스크 2번 삭제
-DELETE http://localhost:9900/projects/3/task/2
+DELETE http://localhost:9900/projects/3/task/3

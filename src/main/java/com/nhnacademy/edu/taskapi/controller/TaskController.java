@@ -2,6 +2,7 @@ package com.nhnacademy.edu.taskapi.controller;
 
 import com.nhnacademy.edu.taskapi.domain.ResultResponse;
 import com.nhnacademy.edu.taskapi.domain.task.TaskCreateDto;
+import com.nhnacademy.edu.taskapi.domain.task.TaskResponseDto;
 import com.nhnacademy.edu.taskapi.domain.task.TaskUpdateDto;
 import com.nhnacademy.edu.taskapi.entity.Task;
 import com.nhnacademy.edu.taskapi.service.TaskService;
@@ -19,12 +20,12 @@ public class TaskController {
     }
 
     @GetMapping("/projects/{projectId}/task")
-    public List<Task> getTasks(@PathVariable("projectId") Long projectId) {
+    public List<TaskResponseDto> getTasks(@PathVariable("projectId") Long projectId) {
         return taskService.getTasks(projectId);
     }
 
     @GetMapping("/projects/{projectId}/task/{taskNumber}")
-    public Task getTask(@PathVariable("projectId") Long projectId, @PathVariable("taskNumber") Long taskNumber) {
+    public TaskResponseDto getTask(@PathVariable("projectId") Long projectId, @PathVariable("taskNumber") Long taskNumber) {
         return taskService.getTask(projectId, taskNumber);
     }
 
