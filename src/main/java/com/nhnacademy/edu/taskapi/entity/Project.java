@@ -12,12 +12,13 @@ import java.util.List;
 @Table(name = "Project")
 @EqualsAndHashCode
 @NoArgsConstructor
-//@AllArgsConstructor
+@AllArgsConstructor
 public class Project {
 
 
     @Id
     @Column
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long projectId;
 
     @Column

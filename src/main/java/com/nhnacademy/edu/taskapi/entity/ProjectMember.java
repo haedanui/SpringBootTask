@@ -20,39 +20,26 @@ import java.util.List;
 @AllArgsConstructor
 public class ProjectMember {
 
-    @EmbeddedId
-    PK pk;
+
+    @Id
+    @Column
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long userNumber;
 
     @Column
     private String userName;
 
-    public ProjectMember(PK pk, String userName) {
-        this.pk = pk;
-        this.userName = userName;
-    }
+    @Column
+    private Long projectNumber;
 
     //조인
-    @MapsId("projectId")
     @ManyToOne
     @JoinColumn(name="projectId")
     private Project project;
 
 
 
-    @NoArgsConstructor
-    @AllArgsConstructor
-    @EqualsAndHashCode
-    @Getter
-    @Setter
-    @Embeddable
-    public static class PK implements Serializable {
 
-        @Column
-        private Long userNumber;
-
-        @Column
-        private Long projectId;
-    }
 
 
 }

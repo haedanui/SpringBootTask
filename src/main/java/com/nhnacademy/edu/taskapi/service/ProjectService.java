@@ -1,15 +1,15 @@
 package com.nhnacademy.edu.taskapi.service;
 
-import com.nhnacademy.edu.taskapi.domain.project.NameIncludeProjectDto;
+import com.nhnacademy.edu.taskapi.domain.project.ProjectInfoDto;
 import com.nhnacademy.edu.taskapi.domain.project.ProjectCreateDto;
 import com.nhnacademy.edu.taskapi.entity.Project;
 
 import java.util.List;
 
 public interface ProjectService {
-    List<NameIncludeProjectDto> getProjects();
+    List<ProjectInfoDto> getProjects();
 
-    List<NameIncludeProjectDto> getProjectsIncludeName(String userName);
+    List<ProjectInfoDto> getProjectsIncludeName(String userName);
 
     Project getProject(Long projectId);
 

@@ -12,6 +12,6 @@ public interface ProjectMemberService {
 
     ProjectMember createProjectMember(ProjectMemberCreateDto projectMemberCreateDto);
 
-    void deleteProjectMember(ProjectMember.PK pk);
+    void deleteProjectMember(Long userNumber);
 
 }

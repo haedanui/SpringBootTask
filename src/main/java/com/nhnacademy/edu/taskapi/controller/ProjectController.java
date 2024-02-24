@@ -1,10 +1,9 @@
 package com.nhnacademy.edu.taskapi.controller;
 
-import com.nhnacademy.edu.taskapi.domain.project.NameIncludeProjectDto;
+import com.nhnacademy.edu.taskapi.domain.project.ProjectInfoDto;
 import com.nhnacademy.edu.taskapi.domain.project.ProjectCreateDto;
 import com.nhnacademy.edu.taskapi.domain.ResultResponse;
 import com.nhnacademy.edu.taskapi.entity.Project;
-import com.nhnacademy.edu.taskapi.exception.ProjectAlreadyExistsException;
 import com.nhnacademy.edu.taskapi.service.ProjectMemberService;
 import com.nhnacademy.edu.taskapi.service.ProjectService;
 import org.springframework.web.bind.annotation.*;
@@ -24,22 +23,18 @@ public class ProjectController {
     }
 
     @GetMapping
-    public List<NameIncludeProjectDto> getProjects(){
+    public List<ProjectInfoDto> getProjects(){
         return projectService.getProjects();
     }
 
     //TODO (Project 멤버는 자신이 속한 Project 목록만 확인할 수 있습니다.)부분
     @GetMapping("/{userName}")
-    public List<NameIncludeProjectDto> getProjectsIncludeName(@PathVariable("userName") String userName){
+    public List<ProjectInfoDto> getProjectsIncludeName(@PathVariable("userName") String userName){
         return projectService.getProjectsIncludeName(userName);
     }
 
     @PostMapping
     public Project createProject(@RequestBody ProjectCreateDto projectCreateDto){
-        Long projectId = projectCreateDto.getProjectId();
-        if(projectService.getProject(projectId) !=null){
-            throw new ProjectAlreadyExistsException();
-        }
         return projectService.createProject(projectCreateDto);
     }
 

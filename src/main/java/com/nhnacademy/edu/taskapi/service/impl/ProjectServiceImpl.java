@@ -1,10 +1,9 @@
 package com.nhnacademy.edu.taskapi.service.impl;
 
-import com.nhnacademy.edu.taskapi.domain.project.NameIncludeProjectDto;
+import com.nhnacademy.edu.taskapi.domain.project.ProjectInfoDto;
 import com.nhnacademy.edu.taskapi.domain.project.ProjectCreateDto;
 import com.nhnacademy.edu.taskapi.entity.Project;
 import com.nhnacademy.edu.taskapi.entity.ProjectMember;
-import com.nhnacademy.edu.taskapi.exception.ProjectAlreadyExistsException;
 import com.nhnacademy.edu.taskapi.exception.ProjectNotFoundException;
 import com.nhnacademy.edu.taskapi.repository.ProjectMemberRepository;
 import com.nhnacademy.edu.taskapi.repository.ProjectRepository;
@@ -28,13 +27,13 @@ public class ProjectServiceImpl implements ProjectService {
     }
 
 
-    public List<NameIncludeProjectDto> getProjects() {
+    public List<ProjectInfoDto> getProjects() {
         return projectRepository.findProjectsByMember();
     }
 
     @Override
     @Transactional
-    public List<NameIncludeProjectDto> getProjectsIncludeName(String userName) {
+    public List<ProjectInfoDto> getProjectsIncludeName(String userName) {
         return projectRepository.findProjectsByMemberUserName(userName);
     }
 
@@ -49,25 +48,18 @@ public class ProjectServiceImpl implements ProjectService {
     @Override
     @Transactional
     public Project createProject(ProjectCreateDto projectCreateDto) {
-        if (projectRepository.existsProjectByProjectId(projectCreateDto.getProjectId())) {
-            throw new ProjectAlreadyExistsException();
-        }
         Project project = new Project();
-        project.setProjectId(projectCreateDto.getProjectId());
         project.setProjectName(projectCreateDto.getProjectName());
         project.setProjectAdmin(projectCreateDto.getProjectAdmin());
         project.setProjectState("할 일");
 
         projectRepository.save(project);
 
+        Project checkProject =projectRepository.findByProjectName(projectCreateDto.getProjectName());
         ProjectMember projectMember = new ProjectMember();
-        ProjectMember.PK pk = new ProjectMember.PK();
-        pk.setProjectId(projectCreateDto.getProjectId());
-        pk.setUserNumber(projectCreateDto.getUserNumber());
-        projectMember.setPk(pk);
         projectMember.setUserName(projectCreateDto.getProjectAdmin());
-        projectMember.setProject(project);
-
+        projectMember.setProjectNumber(checkProject.getProjectId());
+        projectMember.setProject(checkProject);
         projectMemberRepository.save(projectMember);
 
         return project;

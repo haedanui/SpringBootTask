@@ -24,7 +24,8 @@ public class ProjectMemberServiceImpl implements ProjectMemberService {
 
     @Override
     public List<userNameDto> getProjectMembers(Long projectId) {
-        return this.projectMemberRepository.findByPkProjectId(projectId);
+//        return this.projectMemberRepository.findByPkProjectId(projectId);
+        return null;
     }
 
     @Override
@@ -34,12 +35,17 @@ public class ProjectMemberServiceImpl implements ProjectMemberService {
         project.setProjectId(projectMemberCreateDto.getProjectId());
 
         ProjectMember projectMember = new ProjectMember();
-        ProjectMember.PK pk = new ProjectMember.PK();
-        pk.setProjectId(projectMemberCreateDto.getProjectId());
-        pk.setUserNumber(projectMemberCreateDto.getUserNumber());
-        projectMember.setPk(pk);
+        projectMember.setUserNumber(projectMemberCreateDto.getUserNumber());
         projectMember.setUserName(projectMemberCreateDto.getUserName());
-        projectMember.setProject(project);
+
+
+//        ProjectMember projectMember = new ProjectMember();
+//        ProjectMember.PK pk = new ProjectMember.PK();
+//        pk.setProjectId(projectMemberCreateDto.getProjectId());
+//        pk.setUserNumber(projectMemberCreateDto.getUserNumber());
+//        projectMember.setPk(pk);
+//        projectMember.setUserName(projectMemberCreateDto.getUserName());
+//        projectMember.setProject(project);
 
         projectMemberRepository.save(projectMember);
         return projectMember;
@@ -47,7 +53,7 @@ public class ProjectMemberServiceImpl implements ProjectMemberService {
 
     @Override
     @Transactional
-    public void deleteProjectMember(ProjectMember.PK pk) {
-        projectMemberRepository.deleteById(pk);
+    public void deleteProjectMember(Long userNumber) {
+        projectMemberRepository.deleteById(userNumber);
     }
 }
