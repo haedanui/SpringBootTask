@@ -8,8 +8,8 @@ POST http://localhost:9900/projects/3/task
 Content-Type: application/json
 
 {
-  "taskTitle" : "태스크 제목 테스트",
-  "taskContent": "태스크 내용 테스트"
+  "taskTitle" : "제발 되라 제목",
+  "taskContent": "제발 되라 내용"
 }
 
 ###
@@ -18,21 +18,21 @@ GET http://localhost:9900/projects/3/task
 Accept: application/json
 
 ###
-// 프로젝트 3번의 태스크 3번
-GET http://localhost:9900/projects/3/task/3
+// 프로젝트 3번의 태스크 /뒤에 숫자
+GET http://localhost:9900/projects/3/task/12
 Accept: application/json
 
 ###
-// 프로젝트 3번의 태스크 3번 제목, 내용, 상태 수정
-PUT http://localhost:9900/projects/3/task/3
+// 프로젝트 n번의 태스크 n번 제목, 내용, 상태 수정
+PUT http://localhost:9900/projects/3/task/12
 content-Type: application/json
 
 {
-  "taskTitle" : "제목 수정함",
-  "taskContent" : "내용 수정함",
-  "taskState" : "진행중"
+  "taskTitle" : "진짜 제발 좀 되어주세요 수정 제목",
+  "taskContent" : "진빠 제발 좀 되어주세요 수정 내용",
+  "taskState" : "완료되라 제발 !!!!!!"
 }
 
 ###
 // 프로젝트 3번의 태스크 2번 삭제
-DELETE http://localhost:9900/projects/3/task/3
+DELETE http://localhost:9900/projects/3/task/4

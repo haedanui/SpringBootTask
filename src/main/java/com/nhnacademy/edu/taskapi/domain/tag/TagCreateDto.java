@@ -1,4 +1,4 @@
-package com.nhnacademy.edu.taskapi.domain.project;
+package com.nhnacademy.edu.taskapi.domain.tag;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,8 +9,6 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class ProjectCreateDto {
-    private String projectName;
-    private String projectAdmin;
-
+public class TagCreateDto {
+    private String tagName;
 }

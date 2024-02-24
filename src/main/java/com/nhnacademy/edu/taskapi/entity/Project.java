@@ -17,20 +17,21 @@ public class Project {
 
 
     @Id
-//    @Column(name = "projectId")
-    @JsonProperty("projectId")
+    @Column
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @JsonProperty("projectId")
     private Long projectId;
 
     @Column
-    @JsonProperty("projectName")
+//    @JsonProperty("projectName")
     private String projectName;
 
     @Column
-    @JsonProperty("projectState")
+//    @JsonProperty("projectState")
     private String projectState;
 
     @Column
-    @JsonProperty("projectAdmin")
+//    @JsonProperty("projectAdmin")
     private String projectAdmin;
 
 //    @OneToMany(mappedBy = "project", cascade = CascadeType.ALL, fetch = FetchType.LAZY)

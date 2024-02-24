@@ -9,12 +9,11 @@ POST http://localhost:9900/projectmembers
 Content-Type: application/json
 
 {
-  "projectId": 3,
-  "userNumber": 1,
-  "userName": "김지윤"
+  "projectNumber" : 18,
+  "userName": "유승진"
 }
 
 
 ###
-DELETE http://localhost:9900/projectmembers
+DELETE http://localhost:9900/projectmembers/15
 Accept: application/json

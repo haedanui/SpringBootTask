@@ -21,13 +21,13 @@ public class Tag {
 
     @Id
     @Column
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long tagNumber;
 
     @Column
     private String tagName;
 
 
-    //작동 안함
     @ManyToOne
     @JoinColumn(name = "projectId")
     private Project project;
