@@ -1,16 +1,20 @@
 package com.nhnacademy.edu.taskapi.service;
 
-import com.nhnacademy.edu.taskapi.entity.Comment;
+import com.nhnacademy.edu.taskapi.domain.comment.CommentCreateDto;
+import com.nhnacademy.edu.taskapi.domain.comment.CommentResponseDto;
+import com.nhnacademy.edu.taskapi.domain.comment.CommentUpdateDto;
 
 import java.util.List;
 
 public interface CommentService {
 
-    List<Comment> getComments();
+    List<CommentResponseDto> getComments(Long taskNumber);
 
-    Comment getComment(Long commentNumber);
+    CommentResponseDto getComment(Long taskNumber, Long commentNumber);
 
-    Comment createComment(Comment comment);
+    CommentResponseDto createComment(Long taskNumber, CommentCreateDto commentCreateDto);
 
-    void deleteComment(Long commentNumber);
+    CommentResponseDto updateComment(Long taskNumber, Long commentNumber, CommentUpdateDto commentUpdateDto);
+
+    void deleteComment(Long taskNumber, Long commentNumber);
 }
