@@ -3,8 +3,6 @@ package com.nhnacademy.edu.taskapi.entity;
 import lombok.*;
 
 import javax.persistence.*;
-import java.io.Serializable;
-import java.util.List;
 
 @NamedEntityGraph(name=
         "ProjectMemberWithProject", attributeNodes = {

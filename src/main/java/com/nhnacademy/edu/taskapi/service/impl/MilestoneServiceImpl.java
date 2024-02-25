@@ -10,7 +10,6 @@ import com.nhnacademy.edu.taskapi.repository.ProjectRepository;
 import com.nhnacademy.edu.taskapi.repository.TaskRepository;
 import com.nhnacademy.edu.taskapi.service.MilestoneService;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -44,8 +43,6 @@ public class MilestoneServiceImpl implements MilestoneService {
         milestone.setTask(null); // 프로젝트 내에서 생성할 때는 taskNumber 를 null 로
 
         return milestoneRepository.save(milestone);
-
-//        return new MilestoneResponseDto(milestone.getMilestoneName(), milestone.getDateStart(), milestone.getDateFinish());
     }
 
     @Override
@@ -81,30 +78,4 @@ public class MilestoneServiceImpl implements MilestoneService {
 
         return new MilestoneResponseDto(milestone.getMilestoneName(), milestone.getDateStart(), milestone.getDateFinish(), milestone.getProject().getProjectId(), milestone.getTask().getTaskNumber());
     }
-
-
-//    @Autowired
-//    public MilestoneServiceImpl(MilestoneRepository milestoneRepository) {
-//        this.milestoneRepository = milestoneRepository;
-//    }
-//
-//    @Override
-//    public List<Milestone> getMilestoneNumber() {
-//        return milestoneRepository.findAll();
-//    }
-//
-//    @Override
-//    public Milestone getMilestoneNumber(Long milestoneNumber) {
-//        return milestoneRepository.findById(milestoneNumber).orElse(null);
-//    }
-//
-//    @Override
-//    public Milestone createMilestoneNumber(Milestone milestone) {
-//        return milestoneRepository.save(milestone);
-//    }
-//
-//    @Override
-//    public void deleteMilestoneNumber(Long milestoneNumber) {
-//        milestoneRepository.deleteById(milestoneNumber);
-//    }
 }

@@ -4,14 +4,10 @@ package com.nhnacademy.edu.taskapi.controller;
 import com.nhnacademy.edu.taskapi.domain.project.ProjectCreateDto;
 import com.nhnacademy.edu.taskapi.domain.ResultResponse;
 import com.nhnacademy.edu.taskapi.domain.project.ProjectInfoDto;
-//import com.nhnacademy.edu.taskapi.domain.project.ProjectResponseDto;
 import com.nhnacademy.edu.taskapi.domain.project.ProjectUpdateDto;
 import com.nhnacademy.edu.taskapi.entity.Project;
-import com.nhnacademy.edu.taskapi.exception.ProjectAlreadyExistsException;
-import com.nhnacademy.edu.taskapi.service.ProjectMemberService;
 import com.nhnacademy.edu.taskapi.service.ProjectService;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -23,11 +19,9 @@ import java.util.List;
 public class ProjectController {
 
     private final ProjectService projectService;
-    private final ProjectMemberService projectMemberService;
 
-    public ProjectController(ProjectService projectService, ProjectMemberService projectMemberService) {
+    public ProjectController(ProjectService projectService) {
         this.projectService = projectService;
-        this.projectMemberService = projectMemberService;
     }
 
     @GetMapping
