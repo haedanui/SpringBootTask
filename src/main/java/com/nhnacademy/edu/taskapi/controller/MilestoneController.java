@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-//@RequestMapping("/projects/{projectId}/milestone") // 마일스톤은 프로젝트 내에서 생성 가능하고 사용 범위는 마일스톤을 생성한 프로젝트 내임.
 public class MilestoneController {
 
     private final MilestoneService milestoneService;
@@ -49,11 +48,6 @@ public class MilestoneController {
     public MilestoneResponseDto setMilestoneInTask(@PathVariable("projectId") Long projectId, @PathVariable("taskNumber") Long taskNumber, @PathVariable("milestoneNumber") Long milestoneNumber) {
         return milestoneService.setMilestoneInTask(projectId, taskNumber, milestoneNumber);
     }
-
-//    @PutMapping("/projects/{projectId}/task/{taskNumber}/milestone/{milestoneNumber}")
-//    public MilestoneResponseDto deleteMilestoneInTask(@PathVariable("projectId") Long projectId, @PathVariable("taskNumber") Long taskNumber, @PathVariable("milestoneNumber") Long milestoneNumber) {
-//        return milestoneService.deleteMilestoneInTask(projectId, taskNumber, milestoneNumber);
-//    }
 
 
 }

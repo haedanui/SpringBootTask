@@ -3,7 +3,6 @@ package com.nhnacademy.edu.taskapi.entity;
 import lombok.*;
 
 import javax.persistence.*;
-import java.util.List;
 
 @NamedEntityGraph(name=
         "TagWithProject", attributeNodes = {
@@ -31,8 +30,5 @@ public class Tag {
     @ManyToOne
     @JoinColumn(name = "projectId")
     private Project project;
-
-//    @OneToMany(mappedBy = "tag")
-//    private List<ProjectTag> projectTags;
 
 }

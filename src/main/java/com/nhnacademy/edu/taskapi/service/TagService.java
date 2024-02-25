@@ -2,7 +2,6 @@ package com.nhnacademy.edu.taskapi.service;
 
 import com.nhnacademy.edu.taskapi.domain.tag.TagCreateDto;
 import com.nhnacademy.edu.taskapi.domain.tag.TagNameDto;
-import com.nhnacademy.edu.taskapi.entity.ProjectTag;
 import com.nhnacademy.edu.taskapi.entity.Tag;
 
 import java.util.List;

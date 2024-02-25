@@ -3,7 +3,6 @@ package com.nhnacademy.edu.taskapi.service.impl;
 import com.nhnacademy.edu.taskapi.domain.tag.TagCreateDto;
 import com.nhnacademy.edu.taskapi.domain.tag.TagNameDto;
 import com.nhnacademy.edu.taskapi.entity.Project;
-import com.nhnacademy.edu.taskapi.entity.ProjectTag;
 import com.nhnacademy.edu.taskapi.entity.Tag;
 import com.nhnacademy.edu.taskapi.repository.TagRepository;
 import com.nhnacademy.edu.taskapi.service.TagService;

@@ -45,10 +45,4 @@ public class Milestone implements Serializable {
     @JoinColumn(name = "taskNumber")
     private Task task; // 마일스톤이 태스크넘버 가지는걸로 수정
 
-//    public Milestone(Long milestoneNumber, LocalDate dateStart, LocalDate dateFinish) {
-//        this.milestoneNumber = milestoneNumber;
-//        this.dateStart = dateStart;
-//        this.dateFinish = dateFinish;
-//    }
-
 }
