@@ -1,0 +1,24 @@
+###
+GET localhost:9900/projects/3/task/5/tags
+Accept: application/json
+
+
+
+
+###
+###
+###
+POST localhost:9900/projects/3/task/5/tags
+Content-Type: application/json
+
+{
+  "tagNumber": 4
+}
+
+
+
+###
+###
+###
+DELETE localhost:9900/projects/3/task/5/tags/4
+Accept: application/json

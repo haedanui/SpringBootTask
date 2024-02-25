@@ -1,0 +1,36 @@
+###
+// task 5번에 comment 생성
+POST http://localhost:9900/task/5/comments
+Content-Type: application/json
+
+{
+  "userId": "admin",
+  "commentContent": "comment 테스트"
+}
+
+###
+// task 5번에 달린 모든 comment 가져오기
+GET http://localhost:9900/task/5/comments
+Accept: application/json
+
+###
+// task 5번에 달린 1번 comment 가져오기
+GET http://localhost:9900/task/5/comments/1
+Accept: application/json
+
+###
+// task 5번에 달린 1번 comment 수정하기
+PUT http://localhost:9900/task/5/comments/1
+Content-Type: application/json
+
+{
+  "commentContent": "Edit"
+}
+
+###
+// task 5번에 달린 1번 comment 삭제
+DELETE http://localhost:9900/task/5/comments/1
+
+
+
+
