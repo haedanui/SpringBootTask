@@ -1,7 +1,13 @@
 package com.nhnacademy.edu.taskapi.service.impl;
 
+import com.nhnacademy.edu.taskapi.domain.projecttag.ProjectTagCreateDto;
+import com.nhnacademy.edu.taskapi.domain.tag.TagNameDto;
 import com.nhnacademy.edu.taskapi.entity.ProjectTag;
+import com.nhnacademy.edu.taskapi.entity.Tag;
+import com.nhnacademy.edu.taskapi.entity.Task;
 import com.nhnacademy.edu.taskapi.repository.ProjectTagRepository;
+import com.nhnacademy.edu.taskapi.repository.TagRepository;
+import com.nhnacademy.edu.taskapi.repository.TaskRepository;
 import com.nhnacademy.edu.taskapi.service.ProjectTagService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,10 +18,19 @@ import java.util.List;
 public class ProjectTagServiceImpl implements ProjectTagService {
 
     ProjectTagRepository projectTagRepository;
+    TaskRepository taskRepository;
+    TagRepository tagRepository;
 
     @Autowired
-    public ProjectTagServiceImpl(ProjectTagRepository projectTagRepository) {
+    public ProjectTagServiceImpl(ProjectTagRepository projectTagRepository, TaskRepository taskRepository, TagRepository tagRepository) {
         this.projectTagRepository = projectTagRepository;
+        this.taskRepository = taskRepository;
+        this.tagRepository = tagRepository;
+    }
+
+    @Override
+    public List<TagNameDto> getTagNamesByTaskNumber(Long taskNumber) {
+        return projectTagRepository.findTagNamesByTaskNumber(taskNumber);
     }
 
     @Override
@@ -31,7 +46,18 @@ public class ProjectTagServiceImpl implements ProjectTagService {
     }
 
     @Override
-    public ProjectTag createProjectTag(ProjectTag projectTag) {
+    public ProjectTag createProjectTag(Long taskNumber, ProjectTagCreateDto projectTagCreateDto) {
+        ProjectTag.PK pk = new ProjectTag.PK();
+        pk.setTaskNumber(taskNumber);
+        pk.setTagNumber(projectTagCreateDto.getTagNumber());
+
+        Task task = taskRepository.findById(taskNumber).orElse(null);
+        Tag tag = tagRepository.findById(projectTagCreateDto.getTagNumber()).orElse(null);
+
+        ProjectTag projectTag = new ProjectTag();
+        projectTag.setPk(pk);
+        projectTag.setTask(task);
+        projectTag.setTag(tag);
         return projectTagRepository.save(projectTag);
     }
 
