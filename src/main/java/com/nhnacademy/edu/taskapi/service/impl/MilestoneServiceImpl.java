@@ -29,7 +29,7 @@ public class MilestoneServiceImpl implements MilestoneService {
 
     @Override
     public Milestone getMilestone(Long projectId, Long milestoneNumber) {
-        return milestoneRepository.findByProject_ProjectIdAndAndMilestoneNumber(projectId, milestoneNumber);
+        return milestoneRepository.findByProject_ProjectIdAndMilestoneNumber(projectId, milestoneNumber);
     }
 
     @Override
@@ -53,6 +53,34 @@ public class MilestoneServiceImpl implements MilestoneService {
         milestoneRepository.deleteById(milestoneNumber);
     }
 
+    @Override
+    public MilestoneResponseDto setMilestoneInTask(Long projectId, Long taskNumber, Long milestoneNumber) {
+        Milestone milestone = milestoneRepository.findById(milestoneNumber).orElse(null);
+
+        Task task = taskRepository.findById(taskNumber).orElse(null);
+
+        milestone.setTask(task);
+
+        milestoneRepository.save(milestone);
+
+        return new MilestoneResponseDto(milestone.getMilestoneName(), milestone.getDateStart(), milestone.getDateFinish(), milestone.getProject().getProjectId(), milestone.getTask().getTaskNumber());
+    }
+
+    @Override
+    public MilestoneResponseDto getMilestoneInTask(Long projectId, Long taskNumber, Long milestoneNumber) {
+        Milestone milestone = milestoneRepository.findByProject_ProjectIdAndTask_TaskNumberAndMilestoneNumber(projectId, taskNumber, milestoneNumber);
+        return new MilestoneResponseDto(milestone.getMilestoneName(), milestone.getDateStart(), milestone.getDateFinish(), milestone.getProject().getProjectId(), milestone.getTask().getTaskNumber());
+    }
+
+    @Override
+    public MilestoneResponseDto deleteMilestoneInTask(Long projectId, Long taskNumber, Long milestoneNumber) {
+        Milestone milestone = milestoneRepository.findByProject_ProjectIdAndTask_TaskNumberAndMilestoneNumber(projectId, taskNumber, milestoneNumber);
+        milestone.setTask(null);
+
+        milestoneRepository.save(milestone);
+
+        return new MilestoneResponseDto(milestone.getMilestoneName(), milestone.getDateStart(), milestone.getDateFinish(), milestone.getProject().getProjectId(), milestone.getTask().getTaskNumber());
+    }
 
 
 //    @Autowired

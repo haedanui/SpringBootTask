@@ -16,4 +16,8 @@ public class MilestoneResponseDto {
 
     @JsonFormat(pattern = "yyyy.MM.dd")
     private LocalDate dateFinish; // 마감일
+
+    private Long projectId;
+
+    private Long taskNumber;
 }

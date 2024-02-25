@@ -1,9 +1,10 @@
 
+
 POST http://localhost:9900/projects/3/milestone
 Content-Type: application/json
 
 {
-  "mileStoneName": "테스트 마일스톤",
+  "mileStoneName": "마일스톤222222",
   "dateStart": "2024-02-25",
   "dateFinish": "2024-02-28"
 }
@@ -20,3 +21,15 @@ Accept: application/json
 ###
 
 DELETE http://localhost:9900/projects/3/milestone/1
+
+###
+
+PUT http://localhost:9900/projects/3/task/10/milestone/4
+Accept: application/json
+
+###
+
+GET http://localhost:9900/projects/3/task/10/milestone/4
+Accept: application/json
+
+###

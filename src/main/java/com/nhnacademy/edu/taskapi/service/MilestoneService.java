@@ -18,4 +18,10 @@ public interface MilestoneService {
 
     void deleteMilestoneNumber(Long projectId, Long milestoneNumber); // 프로젝트 아이디 + 마일스톤 넘버로 선택한 마일스톤 삭제
 
+    MilestoneResponseDto setMilestoneInTask(Long projectId, Long taskNumber, Long milestoneNumber); // 태스크에서 생성 되어있는 마일스톤 중 하나를 설정
+
+    MilestoneResponseDto getMilestoneInTask(Long projectId, Long taskNumber, Long milestoneNumber); // 태스크에 설정된 마일스톤 가져옴
+
+    MilestoneResponseDto deleteMilestoneInTask(Long projectId, Long taskNumber, Long milestoneNumber); // 태스크에서 마일스톤 없음 으로 설정할 경우
+
 }
